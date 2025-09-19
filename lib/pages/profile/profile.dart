@@ -137,7 +137,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 controller: _whatsappController,
                 decoration: InputDecoration(
                   labelText: "Numéro WhatsApp",
-                  prefixIcon: Image.asset("assets/images/whatsapp.png"),
+                  prefixIcon: Image.asset("assets/images/whatsapp_logo.png"),
                 ),
                 enabled: _isEditing,
               ),
