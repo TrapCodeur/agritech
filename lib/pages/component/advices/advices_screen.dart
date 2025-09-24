@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:readmore/readmore.dart';
 
 class AdvicesScreen extends StatefulWidget {
   const AdvicesScreen({super.key});
@@ -72,25 +73,18 @@ class _AdvicesScreenState extends State<AdvicesScreen> {
                                   fontSize: 16,
                                 ),
                               ),
-                              subtitle: Text(
-                                conseil['subtitle']!,
-                                style: TextStyle(fontSize: 14),
+                              subtitle: ReadMoreText(
+                                '${conseil['subtitle']}',
+                                trimMode: TrimMode.Line,
+                                trimLines: 2,
+                                colorClickableText: Colors.pink,
+                                trimCollapsedText: 'Voir plus',
+                                trimExpandedText: 'Voir moins',
+                                moreStyle: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                              trailing: Icon(
-                                Icons.chevron_right,
-                                color: Colors.black54,
-                              ),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (_) => DetailPage(
-                                      title: conseil['title']!,
-                                      details: conseil['details']!,
-                                    ),
-                                  ),
-                                );
-                              },
                             ),
                           );
                         },
@@ -101,29 +95,6 @@ class _AdvicesScreenState extends State<AdvicesScreen> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class DetailPage extends StatelessWidget {
-  final String title;
-  final String details;
-  const DetailPage({super.key, required this.title, required this.details});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16),
-        child: Text(details, style: TextStyle(fontSize: 16, height: 1.5)),
       ),
     );
   }

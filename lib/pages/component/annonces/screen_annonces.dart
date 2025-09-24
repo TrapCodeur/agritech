@@ -69,12 +69,16 @@ class ScreenAnnonces extends StatelessWidget {
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
                             children: [
-                              Text(
-                                data['titre'] ?? '',
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                              Container(
+                                padding: EdgeInsets.only(top: 30),
+                                child: Text(
+                                  data['titre'] ?? '',
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                               if (isOwner)
@@ -158,16 +162,9 @@ class ScreenAnnonces extends StatelessWidget {
                           Text("Prix : ${data['prix']} CFA/kg"),
                           Row(
                             children: [
-                              Text(data['place']),
-                              SizedBox(width: 20),
+                              Text("Place : ${data['place']}"),
+                              SizedBox(width: 15),
                               Text("Contact : ${data['contact']}"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("Il y'a "),
-                              SizedBox(width: 8),
-                              Text(FieldValue.serverTimestamp() as String),
                             ],
                           ),
                         ],

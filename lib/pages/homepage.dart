@@ -3,6 +3,7 @@ import 'package:agritech/pages/component/advices/advices_screen.dart';
 import 'package:agritech/pages/component/annonces/screen_annonces.dart';
 
 import 'package:agritech/pages/component/price_market/price_market_screen.dart';
+import 'package:agritech/pages/profile/profile.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatefulWidget {
@@ -18,9 +19,18 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       appBar: AppBar(
         title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Acceuil"),
-            IconButton(onPressed: () {}, icon: Icon(Icons.person)),
+            Text("Acceuil", style: TextStyle(fontWeight: FontWeight.bold)),
+            IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfilePage()),
+                );
+              },
+              icon: Icon(Icons.person),
+            ),
           ],
         ),
         centerTitle: true,

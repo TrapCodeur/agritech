@@ -40,8 +40,8 @@ class _CreerAnnoncePageState extends State<CreerAnnoncePage> {
       'contact': _contactController.text.trim(),
       'place': _placeController.text.trim(),
       'type': _type,
-      'userId': user.uid, // On stocke l'utilisateur
       'createdAt': FieldValue.serverTimestamp(),
+      'userId': user.uid,
     });
 
     Navigator.pop(context);

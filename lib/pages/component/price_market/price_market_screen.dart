@@ -132,7 +132,10 @@ class _PriceMarketScreenState extends State<PriceMarketScreen> {
                                   flex: 2,
                                   child: Text(produit['produit']),
                                 ),
-                                Expanded(flex: 2, child: Text(produit['prix'])),
+                                Expanded(
+                                  flex: 2,
+                                  child: Text(produit['prix'].toString()),
+                                ),
                                 Expanded(
                                   flex: 2,
                                   child: Text(produit['marche']),
