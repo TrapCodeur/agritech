@@ -61,7 +61,7 @@ class _RegisterPageState extends State<RegisterPage> {
       if (mounted) {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Homepage()),
+          MaterialPageRoute(builder: (context) => HomePage()),
         );
       }
     } on FirebaseAuthException catch (e) {
@@ -208,7 +208,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                 TextFormField(
                   controller: _fullnameController,
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,
@@ -220,7 +220,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     labelText: "Prenom et Nom",
-                    prefixIcon: const Icon(Icons.domain),
+                    prefixIcon: const Icon(Icons.person),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {

@@ -1,5 +1,6 @@
-import 'package:agritech/pages/component/annonces/add_announcement.dart';
-import 'package:agritech/pages/component/annonces/update_announcement.dart';
+import 'package:agritech/pages/details/detail-annoceur.dart';
+import 'package:agritech/pages/page_available/annonces/add_announcement.dart';
+import 'package:agritech/pages/page_available/annonces/update_announcement.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -165,6 +166,21 @@ class ScreenAnnonces extends StatelessWidget {
                               Text("Place : ${data['place']}"),
                               SizedBox(width: 15),
                               Text("Contact : ${data['contact']}"),
+
+                              Expanded(
+                                child: IconButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            DetailAnnoceur(annonceId: doc.id),
+                                      ),
+                                    );
+                                  },
+                                  icon: Icon(Icons.info),
+                                ),
+                              ),
                             ],
                           ),
                         ],

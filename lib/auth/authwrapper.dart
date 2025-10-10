@@ -13,15 +13,13 @@ class AuthWrapper extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Scaffold(
-            body: Center(
-                child: CircularProgressIndicator()
-            ),
+            body: Center(child: CircularProgressIndicator()),
           );
         }
 
         // Si l'utilisateur est connecté, on va directement à HomePage
         if (snapshot.hasData) {
-          return const Homepage();
+          return const HomePage();
         }
 
         // Sinon, on montre la page de connexion

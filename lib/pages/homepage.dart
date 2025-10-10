@@ -1,163 +1,224 @@
-import 'package:agritech/pages/component/Meteo/meteo_screen.dart';
-import 'package:agritech/pages/component/advices/advices_screen.dart';
-import 'package:agritech/pages/component/annonces/screen_annonces.dart';
-
-import 'package:agritech/pages/component/price_market/price_market_screen.dart';
-import 'package:agritech/pages/profile/profile.dart';
 import 'package:flutter/material.dart';
 
-class Homepage extends StatefulWidget {
-  const Homepage({super.key});
 
-  @override
-  State<Homepage> createState() => _HomepageState();
-}
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
-class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text("Acceuil", style: TextStyle(fontWeight: FontWeight.bold)),
-            IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProfilePage()),
-                );
-              },
-              icon: Icon(Icons.person),
+      backgroundColor: const Color(0xFFF7F8FA),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      const CircleAvatar(
+                        radius: 20,
+                        backgroundImage: AssetImage('assets/profile.jpg'),
+                      ),
+                      const SizedBox(width: 10),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Bonjour',
+                            style: TextStyle(fontSize: 14, color: Colors.grey),
+                          ),
+                          Text(
+                            'Amadou Diallo',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: const [
+                      Icon(Icons.notifications_none_rounded, size: 26),
+                      SizedBox(width: 10),
+                      Icon(Icons.settings_outlined, size: 26),
+                    ],
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 25),
+
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF1EB980), Color(0xFF0B8A52)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+                child: Column(
+                  children: const [
+                    Icon(Icons.agriculture, color: Colors.white, size: 40),
+                    SizedBox(height: 10),
+                    Text(
+                      'NaatalAgri',
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Text(
+                      'Plateforme agricole pour producteurs sénégalais',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white70, fontSize: 14),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 25),
+
+              Expanded(
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 16,
+                  children: [
+                    _HomeCard(
+                      icon: Icons.show_chart_rounded,
+                      title: 'Prix du marché',
+                      subtitle: 'Suivez les prix en temps réel',
+                      color: const Color(0xFFFFD54F),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const PriceMarketScreen()),
+                        );
+                      },
+                    ),
+                    _HomeCard(
+                      icon: Icons.store_mall_directory_rounded,
+                      title: 'Annonces',
+                      subtitle: 'Achetez et vendez vos produits',
+                      color: const Color(0xFFA5D6A7),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ScreenAnnonces()),
+                        );
+                      },
+                    ),
+                    _HomeCard(
+                      icon: Icons.cloud_rounded,
+                      title: 'Météo',
+                      subtitle: 'Prévisions pour vos cultures',
+                      color: const Color(0xFF81D4FA),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const MeteoScreen()),
+                        );
+                      },
+                    ),
+                    _HomeCard(
+                      icon: Icons.tips_and_updates_rounded,
+                      title: 'Conseils',
+                      subtitle: 'Techniques agricoles',
+                      color: const Color(0xFFD7CCC8),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AdvicesScreen()),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _HomeCard extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String subtitle;
+  final Color color;
+  final VoidCallback onTap;
+
+  const _HomeCard({
+    required this.icon,
+    required this.title,
+    required this.subtitle,
+    required this.color,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(20),
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: const Offset(0, 3),
             ),
           ],
         ),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
-      ),
-      body: HomePageAll(),
-    );
-  }
-}
-
-class HomePageAll extends StatefulWidget {
-  const HomePageAll({super.key});
-
-  @override
-  State<HomePageAll> createState() => _HomePageAllState();
-}
-
-class _HomePageAllState extends State<HomePageAll> {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: ListView(
-        children: [
-          Card(
-            margin: EdgeInsets.all(10),
-            child: ListTile(
-              leading: Icon(Icons.show_chart, color: Colors.green),
-              title: Text("Prix du Marché"),
-              trailing: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => PriceMarketScreen(),
-                    ),
-                  );
-                },
-                icon: Icon(Icons.chevron_right),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                backgroundColor: color.withOpacity(0.2),
+                radius: 28,
+                child: Icon(icon, color: color, size: 28),
               ),
-            ),
-          ),
-          Card(
-            margin: EdgeInsets.all(10),
-            child: ListTile(
-              leading: Icon(Icons.volume_up, color: Colors.green),
-              title: Text("Annonces"),
-              trailing: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ScreenAnnonces()),
-                  );
-                },
-                icon: Icon(Icons.chevron_right),
+              const SizedBox(height: 10),
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-          ),
-          Card(
-            margin: EdgeInsets.all(10),
-            child: ListTile(
-              leading: Icon(Icons.pets, color: Colors.green),
-              title: Text("Météo"),
-              trailing: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MeteoScreen()),
-                  );
-                },
-                icon: Icon(Icons.chevron_right),
+              const SizedBox(height: 5),
+              Text(
+                subtitle,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontSize: 12, color: Colors.grey),
               ),
-            ),
+            ],
           ),
-          Card(
-            margin: EdgeInsets.all(10),
-            child: ListTile(
-              leading: Icon(Icons.local_florist, color: Colors.green),
-              title: Text("Conseils"),
-              trailing: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AdvicesScreen()),
-                  );
-                },
-                icon: Icon(Icons.chevron_right),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class MyButtomNavigation extends StatefulWidget {
-  const MyButtomNavigation({super.key});
-
-  @override
-  State<MyButtomNavigation> createState() => _MyButtomNavigationState();
-}
-
-class _MyButtomNavigationState extends State<MyButtomNavigation> {
-  var _currrentIndex = 0;
-  setCurrentIndex(index) {
-    setState(() {
-      _currrentIndex = index;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: _currrentIndex,
-      onTap: (index) => setCurrentIndex(index),
-      items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home, color: Colors.green)),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.volume_up, color: Colors.green),
         ),
-        BottomNavigationBarItem(icon: Icon(Icons.pets, color: Colors.green)),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.local_florist, color: Colors.green),
-        ),
-      ],
+      ),
     );
   }
 }
