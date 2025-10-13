@@ -1,5 +1,9 @@
+import 'package:agritech/pages/page_available/Meteo/meteo_screen.dart';
+import 'package:agritech/pages/page_available/advices/advices_screen.dart';
+import 'package:agritech/pages/page_available/annonces/screen_annonces.dart';
+import 'package:agritech/pages/page_available/price_market/price_market_screen.dart';
+import 'package:agritech/pages/profile/profile.dart';
 import 'package:flutter/material.dart';
-
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -21,7 +25,9 @@ class HomePage extends StatelessWidget {
                     children: [
                       const CircleAvatar(
                         radius: 20,
-                        backgroundImage: AssetImage('assets/profile.jpg'),
+                        backgroundImage: AssetImage(
+                          'assets/images/profile.jpg',
+                        ),
                       ),
                       const SizedBox(width: 10),
                       Column(
@@ -43,10 +49,23 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                   Row(
-                    children: const [
-                      Icon(Icons.notifications_none_rounded, size: 26),
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.notifications_none_rounded, size: 26),
+                      ),
                       SizedBox(width: 10),
-                      Icon(Icons.settings_outlined, size: 26),
+                      IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ProfilePage(),
+                            ),
+                          );
+                        },
+                        icon: Icon(Icons.settings_outlined, size: 26),
+                      ),
                     ],
                   ),
                 ],
@@ -104,7 +123,8 @@ class HomePage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const PriceMarketScreen()),
+                            builder: (context) => PriceMarketScreen(),
+                          ),
                         );
                       },
                     ),
@@ -117,7 +137,8 @@ class HomePage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ScreenAnnonces()),
+                            builder: (context) => ScreenAnnonces(),
+                          ),
                         );
                       },
                     ),
@@ -130,7 +151,8 @@ class HomePage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const MeteoScreen()),
+                            builder: (context) => MeteoScreen(),
+                          ),
                         );
                       },
                     ),
@@ -143,7 +165,8 @@ class HomePage extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const AdvicesScreen()),
+                            builder: (context) => AdvicesScreen(),
+                          ),
                         );
                       },
                     ),

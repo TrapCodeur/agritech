@@ -20,6 +20,7 @@ class _PriceMarketScreenState extends State<PriceMarketScreen> {
         ),
         centerTitle: true,
         leading: Icon(Icons.arrow_back),
+
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
         elevation: 0,
@@ -96,7 +97,14 @@ class _PriceMarketScreenState extends State<PriceMarketScreen> {
                     .snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: CircularProgressIndicator());
+                    return const Center(
+                      child: Column(
+                        children: [
+                          CircularProgressIndicator(),
+                          Text("En chargement ..."),
+                        ],
+                      ),
+                    );
                   }
                   if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                     return const Center(
