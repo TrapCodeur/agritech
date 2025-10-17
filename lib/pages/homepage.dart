@@ -64,7 +64,7 @@ class HomePage extends StatelessWidget {
                             ),
                           );
                         },
-                        icon: Icon(Icons.settings_outlined, size: 26),
+                        icon: Icon(Icons.person, size: 26),
                       ),
                     ],
                   ),
@@ -150,9 +150,7 @@ class HomePage extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (context) => MeteoScreen(),
-                          ),
+                          MaterialPageRoute(builder: (context) => MeteoPage()),
                         );
                       },
                     ),

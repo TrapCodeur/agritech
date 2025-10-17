@@ -79,6 +79,7 @@ class _AdvicesScreenState extends State<AdvicesScreen> {
                                 trimLines: 2,
                                 colorClickableText: Colors.pink,
                                 trimCollapsedText: 'Voir plus',
+
                                 trimExpandedText: 'Voir moins',
                                 moreStyle: TextStyle(
                                   fontSize: 14,

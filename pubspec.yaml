@@ -35,6 +35,7 @@ dependencies:
   cloud_firestore: ^6.0.2
   multi_select_flutter: ^4.1.3
   readmore: ^3.0.0
+  http: ^1.5.0
   # Firebase Storage (stockage des images de profil)
 
 
